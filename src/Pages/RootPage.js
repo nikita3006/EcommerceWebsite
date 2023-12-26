@@ -14,7 +14,7 @@ const RootPage = ({children}) =>{
     const showProfileOnScreen=()=>{setShowProfile(true)}
     const hideProfile=()=>{setShowProfile(false)}
 
-    return(
+    return( 
         <CartContextProvider>
         <div style={{minHeight:'100%',position:'relative'}} >
           <div >

@@ -1,14 +1,13 @@
-import MainNavbar from "../Components/Header/MainNavbar"
-import AboutContent from "../Components/About/AboutContent"
-import MainFooter from "../Components/Header/MainFooter"
+import Header from '../Components/Header/Header'
+import AboutContent from '../Components/About/AboutContent'
+
 
 const About=()=>{
     return(
-        <>
-          <MainNavbar/>
-          <AboutContent/>
-          <MainFooter/>
-        </>
+      <>
+      <Header/>
+      <AboutContent/>
+      </>
     )
 }
 

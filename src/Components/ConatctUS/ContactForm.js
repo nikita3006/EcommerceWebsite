@@ -6,6 +6,38 @@ const ContactForm = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
+  const [isValid,setIsValid]=useState(false)
+
+  const NameHandler=(e)=>{
+    setName(e.target.value)
+    if(e.target.value.trim().length>0 && email.includes('@') && phoneNumber.trim().length>7){
+      setIsValid(true)
+    }
+    else{
+      setIsValid(false)
+    }
+  }
+
+  const EmailHandler=(e)=>{
+    setEmail(e.target.value)
+    if(name.trim().length>0 && e.target.value.includes('@') && phoneNumber.trim().length>7){
+      setIsValid(true)
+    }
+    else{
+      setIsValid(false)
+    }
+  }
+
+  const phoneNumberHandler=(e)=>{
+    e.preventDefault()
+    setPhoneNumber(e.target.value)
+    if(name.trim().length>0 && email.includes('@') && e.target.value.trim().length>7){
+      setIsValid(true)
+    }
+    else{
+      setIsValid(false)
+    }
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -29,7 +61,7 @@ const ContactForm = () => {
           type="text"
           id="name"
           value={name}
-          onChange={(e) => setName(e.target.value)}
+          onChange={NameHandler}
         />
       </div>
       <div className={classes.field}>
@@ -38,7 +70,7 @@ const ContactForm = () => {
           type="email"
           id="email"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={EmailHandler}
         />
       </div>
       <div className={classes.field}>
@@ -47,10 +79,12 @@ const ContactForm = () => {
           type="text"
           id="phoneNumber"
           value={phoneNumber}
-          onChange={(e) => setPhoneNumber(e.target.value)}
+          onChange={phoneNumberHandler}
         />
       </div>
-      <button type="submit" className={classes.button}>Submit</button>
+      <div className={classes.btn}>
+       <button type="submit" disabled={!isValid} className={classes.button}>Submit</button>
+      </div>
     </form>
     </div>
   );

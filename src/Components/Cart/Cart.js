@@ -3,6 +3,7 @@ import Modal from '../UI/Modal'
 import { Button } from 'react-bootstrap'
 import classes from './Cart.module.css'
 import CartContext from '../Context/CartContext'
+import { FaTimes } from 'react-icons/fa';
 
 
 
@@ -53,7 +54,7 @@ const Cart=(props)=>{
                          <input type="number" value={item.quantity} onChange={(event)=>QuantityHandler(event,item.name)} min={1} className={classes.QuantityInput} />
                      </td>
                      <td className="removeButton">
-                         <Button variant="danger" onClick={()=>RemoveItem(item.name)}>Remove</Button>
+                         <Button variant="danger" onClick={()=>RemoveItem(item.name)}><FaTimes/></Button>
                      </td>
                  </tr>
              ))

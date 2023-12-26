@@ -51,17 +51,17 @@ const ProductsOnScreen=()=>{
         <p className={classes.heading}>Music</p>
         <div className={classes.MusicProducts}>
           {productsArr.map((product, index) => (
-            <button className={classes.cardBtn}>
-            <Link to={`/product-details/${product.name}`} > 
+            <button className={classes.cardBtn}> 
               <div key={index} className={classes.product}>
+              <Link to={`/product-details/${product.name}`} >
                 <h2 className={classes.productName}>{product.name}</h2>
                 <img src={product.imageUrl} alt={product.title} style={{ width: '200px' }} />
+              </Link>
                 <div className={classes.Price}>
                   <h4>${product.price}</h4>
                   <Button className='responsive-button' variant='primary' onClick={()=>AddCart(product.name)}>Add to Cart</Button>
                 </div>
               </div> 
-            </Link>
             </button>
           ))}
         </div>

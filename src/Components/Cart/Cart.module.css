@@ -38,6 +38,6 @@
 }
 .amount{display: flex;justify-content: flex-end;margin-top: 0.2rem;margin-right: 1rem;}
 
-@media screen and (max-width:568px) {
-    .img{width:60px}
+@media screen and (max-width:428px) {
+    .img{width:35px; height:35px;}
 }

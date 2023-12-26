@@ -1,15 +1,17 @@
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import Home from "./Pages/Home";
 import About from "./Pages/About";
-import CartContextProvider from "./Components/Context/CartContextProvider";
 import Store from "./Pages/Store";
 import RootPage from "./Pages/RootPage";
 import ContactUs from "./Pages/ContactUs";
 import ProductDetails from "./Components/Products/Product-details";
+import Login from './Components/Login/Login'
+import SignUP from './Components/Login/SignUp';
 
 const App = () => {
+
   return (
-    <CartContextProvider>
+    
       <Switch>
         <RootPage>
           <Route exact path="/">
@@ -27,9 +29,12 @@ const App = () => {
           <Route path="/product-details/:productID">
             <ProductDetails />
           </Route>
+          <Route path='/login'><Login/></Route>
+          <Route path='/signup'><SignUP/></Route>
+
+          <Route path='*'><Redirect path='/'/></Route>
         </RootPage>
       </Switch>
-    </CartContextProvider>
   );
 };
 export default App;

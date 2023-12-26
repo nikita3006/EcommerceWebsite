@@ -9,9 +9,9 @@ const MainFooter = () => {
         <p className={classes.name}>MovieShow</p>
       </div>
       <div className={classes.rightSection}>
-        <FaYoutube className={classes.icon} />
-        <FaSpotify className={classes.icon}/>
-        <FaInstagram className={classes.icon}/>
+        <FaYoutube color="#FF0000" size={32} className={classes.icon} />
+        <FaSpotify color="#1DB954" size={32} className={classes.icon} />
+        <FaInstagram color="#C13584" size={32} className={classes.icon} />
       </div>
     </footer>
   );

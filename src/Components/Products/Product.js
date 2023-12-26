@@ -2,6 +2,7 @@ import { Button } from 'react-bootstrap'
 import classes from './Product.module.css'
 import CartContext from '../Context/CartContext'
 import { useContext } from 'react'
+import Card from '../UI/Card'
 
 
 const ProductsOnScreen=()=>{
@@ -50,6 +51,7 @@ const ProductsOnScreen=()=>{
         <p className={classes.heading}>Music</p>
         <div className={classes.MusicProducts}>
           {productsArr.map((product, index) => (
+            <Card>
             <div key={index} className={classes.product}>
              <h2>{product.name}</h2>
              <img src={product.imageUrl} alt={product.title} style={{ width: '200px' }} />
@@ -58,6 +60,7 @@ const ProductsOnScreen=()=>{
                 <Button variant='primary' onClick={()=>AddCart(product.name)}>Add to Cart</Button>
              </div>
             </div>
+            </Card>
           ))}
         </div>
         </div>

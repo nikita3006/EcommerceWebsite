@@ -4,10 +4,9 @@ const Header=()=>{
     return(
         <>
          <div style={headerStyle}>
-            <h1 style={textStyle}>The Generics</h1>
+            <h1 style={textStyle}>The MovieShow</h1>
          </div>
         </>
     )
 }
-
 export default Header

@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
-
+import React, { useContext, useState } from 'react';
 import { Button,Navbar } from 'react-bootstrap';
 import { GiHamburgerMenu} from 'react-icons/gi';
 import classes from './MainNavbar.module.css';
+import CartContext from '../Context/CartContext';
 
 
-const MainNavbar = () => {
+const MainNavbar = (props) => {
   const [showMenuList,setShowMenuList]=useState(false)
+  const ctx=useContext(CartContext)
 
   return (
     <div>
@@ -21,9 +22,9 @@ const MainNavbar = () => {
       </div>
       <div className={classes.button}>
         <div className={classes['cart-button']}>
-          <Button variant="primary" style={{display: 'flex',alignItems: 'center',justifyContent: 'center',gap: '0.5rem'}}>
+          <Button variant="primary" onClick={props.onShow} style={{display: 'flex',alignItems: 'center',justifyContent: 'center',gap: '0.5rem'}}>
             <span>Add Cart</span>
-            <span className={classes.cartCircle}>6</span>
+            <span className={classes.cartCircle}>{ctx.cart.length}</span>
           </Button>
         </div>
         <button className={classes['toggle-menu']} onClick={()=>setShowMenuList(!showMenuList)}>
@@ -34,5 +35,4 @@ const MainNavbar = () => {
     </div>
   );
 };
-
 export default MainNavbar;

@@ -7,7 +7,7 @@
     background-color: rgba(240, 64, 64, 0.8);
 }
 .logo-name{
-    display: grid; justify-content: center;font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    grid-column: 1/2;display: grid; justify-content: center;font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 .cartCircle {
     width: 24px;height: 24px;
@@ -17,6 +17,7 @@
   }
 .mobile-menu-list{display:none}
 .menu-list{
+    grid-column: 2/3;
     display: grid;
     grid-template-columns: repeat(3,33.33%);justify-content: space-evenly;
 }
@@ -29,6 +30,7 @@
     background-color:white;color:black;padding: 3px 10%;width: 150%;
 }
 .button{
+    grid-column: 2/3;
     display: grid; justify-content: center;
 }
 .toggle-menu{

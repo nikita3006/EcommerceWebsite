@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import classes from './MainNavbar.module.css';
+
 import { Button,Navbar } from 'react-bootstrap';
 import { GiHamburgerMenu} from 'react-icons/gi';
+import classes from './MainNavbar.module.css';
 
 
 const MainNavbar = () => {

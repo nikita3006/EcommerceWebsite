@@ -4,69 +4,63 @@ import { Button } from 'react-bootstrap'
 import classes from './Cart.module.css'
 import CartContext from '../Context/CartContext'
 import { FaTimes } from 'react-icons/fa';
-
-
-
 const Cart=(props)=>{
     const ctx=useContext(CartContext)
     const cartElements=ctx.cart
-
     const RemoveItem = (name) =>{
         const newCart=cartElements.find((item)=>item.name === name )
         ctx.offCart(newCart)
     }
-
     const QuantityHandler=(event,name)=>{
         const change=cartElements.find((item)=>item.name===name)
         change.quantity=event.target.value
         ctx.quantityChange(change)
     }
-
     return(
         <Modal onClose={props.onClose}>
-        <div className={classes.cartHead}>
-           <h1 className={classes.heading}>Cart</h1>
-           <div className={classes.cartClose}>
-             <Button variant="danger" onClick={props.onClose}>X</Button>
+           <div className={classes.cartHead}>
+              <h1 className={classes.heading}>Cart</h1>
+              <div>
+                <button className={classes.cartClose} onClick={props.onClose}><FaTimes/></button>
+              </div>
            </div>
-        </div>
-        <div className={classes.scroll}>
-        <table className={classes.table} >
-          <thead>
-            <tr className={classes.headingRow}>
-             <th className={classes.th}>Item</th>
-             <th className={classes.th}>Price</th>
-             <th className={classes.th}>Quantity</th>
-            </tr>
-          </thead>
-          <tbody className={classes.scrollPart}>
-          {
-             cartElements.map((item,index)=>(
-                 <tr key={index} className={classes.tr}>
-                     <td className={classes.Item}>
-                        <img src={item.imageUrl} alt={item.title} className={classes.img} />
-                        <h5 className={classes.Title}>{item.name}</h5>
-                     </td>
-                     <td className={classes.Price}>
-                         ${item.price}
-                     </td>
-                     <td className={classes.Quantity}>
-                         <input type="number" value={item.quantity} onChange={(event)=>QuantityHandler(event,item.name)} min={1} className={classes.QuantityInput} />
-                     </td>
-                     <td className="removeButton">
-                         <Button variant="danger" onClick={()=>RemoveItem(item.name)}><FaTimes/></Button>
-                     </td>
-                 </tr>
-             ))
-          }
-          </tbody>
-        </table>
-        </div>
-        <h4 className={classes.amount}>Total : ${ctx.totalAmount}</h4>
-        <div className={classes.purchaseButton}>
-          <Button variant='primary'>Purchase</Button>
-        </div>
-     </Modal>
- )
+           <div className={classes.scroll}>
+           <table className={classes.table} >
+             <thead>
+               <tr className={classes.headingRow}>
+                <th className={classes.th}>Item</th>
+                <th className={classes.th}>Price</th>
+                <th className={classes.th}>Quantity</th>
+               </tr>
+             </thead>
+             <tbody className={classes.scrollPart}>
+             {
+                cartElements.map((item,index)=>(
+                    <tr key={index} className={classes.tr}>
+                        <td className={classes.Item}>
+                           <img src={item.imageUrl} alt={item.title} className={classes.img} />
+                           <h5 className={classes.Title}>{item.name}</h5>
+                        </td>
+                        <td className={classes.Price}>
+                            ${item.price}
+                        </td>
+                        <td className={classes.Quantity}>
+                            <input type="number" value={item.quantity} onChange={(event)=>QuantityHandler(event,item.name)} min={1} className={classes.QuantityInput} />
+                        </td>
+                        <td className="removeButton">
+                            <button className={classes.responsiveBtn} onClick={()=>RemoveItem(item.name)}><FaTimes/></button>
+                        </td>
+                    </tr>
+                ))
+             }
+             </tbody>
+           </table>
+           </div>
+           <h4 className={classes.amount}>Total : ${ctx.totalAmount}</h4>
+           <div className={classes.purchaseButton}>
+             <Button variant='primary' className='responsive-button'>Purchase</Button>
+           </div>
+        </Modal>
+    )
 }
 export default Cart

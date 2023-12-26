@@ -89,7 +89,7 @@ const Login=()=>{
 
             console.log(data);
 
-            ctx2.login(data.idToken);
+            ctx2.login(data.idToken,data.email);
 
             history.push('/store')
 
